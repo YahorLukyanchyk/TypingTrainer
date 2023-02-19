@@ -1,0 +1,71 @@
+@import "./assets/scss/reset.scss";
+@import "./assets/scss/fonts.scss";
+@import "./assets/scss/variables.scss";
+@import "./assets/scss/buttons.scss";
+
+body,
+html {
+  height: 100%;
+  background-color: $main_background;
+  color: $main_color;
+  font-family: "InputMonoCondensed";
+  font-style: normal;
+
+  scrollbar-color: $main_color $main_background_opacity;
+}
+
+.wrapper div,
+img {
+  border-radius: 20px;
+}
+
+a {
+  color: $main_color;
+  text-decoration: none;
+}
+
+[class$="__container"] {
+  max-width: 1230px;
+  padding: 0 25px;
+  margin: 0 auto;
+}
+
+[class$="__wrapper"] {
+  background-color: $main_background_opacity;
+  padding: 0 24.5px;
+}
+
+section {
+  [class$="__wrapper"] {
+    padding: 40px;
+  }
+}
+
+h1 {
+  font-family: "InputMono";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+h2 {
+  font-family: "InputMono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: "InputMonoCondensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}

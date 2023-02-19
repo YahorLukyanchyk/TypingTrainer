@@ -1,0 +1,11 @@
+@import "../../../assets/scss/variables.scss";
+
+.footer__credits {
+    height: 88px;
+  }
+  
+  .footer__authors-block{
+      display: flex;
+      gap: 40px;
+      margin-left: auto;
+  }

@@ -1,0 +1,13 @@
+.scroll-up__block{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    .button{
+        width: auto;
+    }
+
+    img{
+        transform: rotate(-90deg);
+    }
+}

@@ -1,0 +1,28 @@
+@import "../../assets/scss/variables.scss";
+
+.modal{
+    position: fixed;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    background-color: $main_background_opacity;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        margin-bottom: 40px;
+    }
+}
+
+.modal__block{
+    position: relative;
+    left: 35px;
+    display: flex;
+    gap: 20px;
+}
+
+.modal__exit{
+    align-self: flex-start;
+    width: auto;
+}
