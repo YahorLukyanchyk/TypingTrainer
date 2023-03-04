@@ -1,0 +1,17 @@
+@import "../../assets/scss/variables.scss";
+
+.not-found {
+  p {
+    margin: 20px 0 50px 0;
+  }
+
+  .button {
+    width: 334px;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.not-found__wrapper {
+  display: flex;
+}

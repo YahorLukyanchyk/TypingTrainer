@@ -52,3 +52,8 @@
   margin-left: auto;
   margin-right: 10px;
 }
+
+.nav-active{
+  background-color: $main_color;
+  color: $popup_background;
+}

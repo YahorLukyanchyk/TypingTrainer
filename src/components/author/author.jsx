@@ -1,6 +1,6 @@
-import "./author.scss"
+import "./author.scss";
 
-function Author({link, image, name, work}) {
+function Author({ link, image, name, work }) {
   return (
     <a href={link} className="footer__author-link">
       <div className="block-author__avatar-wrapper">

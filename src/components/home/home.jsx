@@ -39,27 +39,6 @@ function Home({ changeModalVisible }) {
           </div>
         </div>
       </section>
-      <section className="section__keyboard">
-        <div className="section__wrapper">
-          <div className="section__keyboard-content">
-            <div className="section__keyboard-info">
-              <h2>Клац-клац!</h2>
-              <p>
-                С TypingTrainer Вы сможете получить мощный инструмент, который
-                поможет Вам улучшить свои навыки слепой печати. Наши удобные,
-                интуитивно понятные уроки, различные уровни сложности и
-                индивидуальный план тренировки помогут Вам достичь максимальных
-                результатов.
-              </p>
-            </div>
-            <div className="section__keyboard-change">
-              <button className="inline-button">RUS</button>
-              <button className="inline-button">ENG</button>
-            </div>
-          </div>
-          <Keyboard />
-        </div>
-      </section>
       <section className="section__track">
         <div className="section__wrapper">
           <div className="section__image-wrapper">

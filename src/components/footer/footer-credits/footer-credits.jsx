@@ -1,6 +1,5 @@
 import "./footer-credits.scss"
-import avatar from "../../../assets/img/author-artur.png";
-
+import authors from "../../../data/authors";
 import Author from "../../author/author";
 
 function FooterCredits() {
@@ -17,24 +16,9 @@ function FooterCredits() {
               </a>
             </div>
             <div className="footer__authors-block">
-              <Author
-                link="/"
-                image={avatar}
-                name="Артур Чернецкий"
-                work="Дизайн интерфейса"
-              />
-              <Author
-                link="/"
-                image={avatar}
-                name="Егор Лукьянчик"
-                work="Front-end разработка"
-              />
-              <Author
-                link="/"
-                image={avatar}
-                name="Андрей Янковец"
-                work="Back-end разработка"
-              />
+              {authors.map((author) => {
+               return <Author key={author.id} {...author}/>
+              })}
             </div>
           </div>
         </div>
