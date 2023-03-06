@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useSignIn } from "react-auth-kit";
 
 import "./modal-sign-in.scss";
 
@@ -20,6 +21,8 @@ function ModalSignIn({
   const email = useRef(null);
   const password = useRef(null);
   const username = useRef(null);
+
+  const signIn = useSignIn();
 
   const [postResult, setPostResult] = useState(null);
 
@@ -92,12 +95,22 @@ function ModalSignIn({
     try {
       const res = await fetch(logURL, {
         method: "post",
+
         headers: {
           "Content-Type": "application/json",
           "x-access-token": "token-value",
         },
         body: JSON.stringify(postData),
       });
+
+      signIn({
+        token: res.body.token,
+        expiresIn: 3600,
+        tokenType: "Bearer",
+        authState: { email: postData.email },
+      });
+
+      sessionStorage.setItem("userdetails", JSON.stringify(postData));
 
       // show error message (code + status) in the console
       if (!res.ok) {

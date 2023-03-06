@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { AuthProvider } from "react-auth-kit";
 
 import "./App.scss";
 
@@ -51,43 +52,50 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="wrapper">
-        <Modal
-          modalVisible={modalVisible}
-          modalType={modalType}
-          resetModalVisible={resetModalVisible}
-          getUserData={getUserData}
-          setLoggedStatus={setLoggedStatus}
-          userData={userData}
-        />
-        <Header
-          changeModalVisible={changeModalVisible}
-          userData={userData}
-          loggedStatus={loggedStatus}
-          resetModalVisible={resetModalVisible}
-        />
-        <main className="main">
-          <div className="main__container">
-            <Routes>
-              <Route path="*" element={<NotFound />} />
-              <Route
-                path="/"
-                element={
-                  device === "desktop" ? (
-                    <Home changeModalVisible={changeModalVisible} />
-                  ) : (
-                    <Navigate replace to={"notfound"} />
-                  )
-                }
-              />
-            </Routes>
-          </div>
-        </main>
-        <UpButton />
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <AuthProvider 
+    authType = {"cookie"}
+    authName = {"AUTH"}
+    cookieDomain = {window.location.hostname}
+    cookieSecure = {false}
+    >
+      <BrowserRouter>
+        <div className="wrapper">
+          <Modal
+            modalVisible={modalVisible}
+            modalType={modalType}
+            resetModalVisible={resetModalVisible}
+            getUserData={getUserData}
+            setLoggedStatus={setLoggedStatus}
+            userData={userData}
+          />
+          <Header
+            changeModalVisible={changeModalVisible}
+            userData={userData}
+            loggedStatus={loggedStatus}
+            resetModalVisible={resetModalVisible}
+          />
+          <main className="main">
+            <div className="main__container">
+              <Routes>
+                <Route path="*" element={<NotFound />} />
+                <Route
+                  path="/"
+                  element={
+                    device === "desktop" ? (
+                      <Home changeModalVisible={changeModalVisible} />
+                    ) : (
+                      <Navigate replace to={"notfound"} />
+                    )
+                  }
+                />
+              </Routes>
+            </div>
+          </main>
+          <UpButton />
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
