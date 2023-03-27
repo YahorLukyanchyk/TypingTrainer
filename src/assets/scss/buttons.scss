@@ -35,6 +35,8 @@
   &:active{
     background: $popup_background;
   }
+
+  z-index: 0;
 }
 
 .inline-button {

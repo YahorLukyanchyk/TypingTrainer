@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { AuthProvider } from "react-auth-kit";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useIsAuthenticated, useAuthUser } from "react-auth-kit";
 
 import "./App.scss";
 
@@ -12,90 +12,53 @@ import Header from "./components/header/header";
 import Home from "./components/home/home";
 import Footer from "./components/footer/footer";
 import UpButton from "./components/up-button/up-button";
+import Profile from "./components/profile/profile";
+import Courses from "./components/profile/courses/courses";
+import Modes from "./components/profile/modes/modes";
+import Settings from "./components/profile/settings/settings";
+import PlayRoom from "./components/playroom/playroom";
 
 const device = deviceType();
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState("");
-  const [userData, setUserData] = useState({
-    data: {
-      username: "",
-      status: null,
-    },
-  });
-  const [loggedStatus, setLoggedStatus] = useState(false);
-
-  //console.log(userData);
-  //console.log(loggedStatus);
-
-  function getUserData(userData) {
-    setUserData(userData);
-  }
-
-  function changeModalVisible(event) {
+  const [modalType, setModalType] = useState("stats");
+  function changeModalVisible(e) {
+    document.body.classList.toggle("overflow-hidden");
     setModalVisible(!modalVisible);
-    document.body.classList.add("overflow-hidden");
-    // console.log(event.currentTarget.id);
-    if (event.currentTarget.id === "sign-in") {
-      setModalType("sign-in");
-    }
-    if (event.currentTarget.id === "course") {
-      setModalType("course");
-    }
-  }
-
-  function resetModalVisible() {
-    setModalVisible(false);
-    setModalType("");
-    document.body.classList.remove("overflow-hidden");
+    setModalType(e.target.id);
   }
 
   return (
-    <AuthProvider 
-    authType = {"cookie"}
-    authName = {"AUTH"}
-    cookieDomain = {window.location.hostname}
-    cookieSecure = {false}
-    >
-      <BrowserRouter>
-        <div className="wrapper">
-          <Modal
-            modalVisible={modalVisible}
-            modalType={modalType}
-            resetModalVisible={resetModalVisible}
-            getUserData={getUserData}
-            setLoggedStatus={setLoggedStatus}
-            userData={userData}
-          />
-          <Header
-            changeModalVisible={changeModalVisible}
-            userData={userData}
-            loggedStatus={loggedStatus}
-            resetModalVisible={resetModalVisible}
-          />
-          <main className="main">
-            <div className="main__container">
-              <Routes>
-                <Route path="*" element={<NotFound />} />
-                <Route
-                  path="/"
-                  element={
-                    device === "desktop" ? (
-                      <Home changeModalVisible={changeModalVisible} />
-                    ) : (
-                      <Navigate replace to={"notfound"} />
-                    )
-                  }
-                />
-              </Routes>
-            </div>
-          </main>
-          <UpButton />
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </AuthProvider>
+    <BrowserRouter>
+      <div className="wrapper">
+        <Modal
+          modalVisible={modalVisible}
+          changeModalVisible={changeModalVisible}
+          modalType={modalType}
+        />
+        <Header changeModalVisible={changeModalVisible} />
+        <main className="main">
+          <div className="main__container">
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route
+                path="/"
+                element={<Home changeModalVisible={changeModalVisible} />}
+              />
+              <Route path="profile/*" element={<Profile />}>
+                <Route path="courses" element={<Courses />}></Route>
+                <Route path="modes" element={<Modes />}></Route>
+                <Route path="settings" element={<Settings />}></Route>
+              </Route>
+              <Route path="playroom" element={<PlayRoom modalVisible={modalVisible}/>} />
+            </Routes>
+          </div>
+        </main>
+        <UpButton />
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

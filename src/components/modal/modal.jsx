@@ -4,11 +4,8 @@ import "./modal.scss";
 
 function Modal({
   modalVisible,
+  changeModalVisible,
   modalType,
-  resetModalVisible,
-  getUserData,
-  setLoggedStatus,
-  userData,
 }) {
   return (
     modalVisible && (
@@ -16,14 +13,11 @@ function Modal({
         <div className="modal__block">
           {modalType === "sign-in" && (
             <ModalSignIn
-              getUserData={getUserData}
-              setLoggedStatus={setLoggedStatus}
-              userData={userData}
-              resetModalVisible={resetModalVisible}
+              changeModalVisible={changeModalVisible}
             />
           )}
           {modalType === "course" && <ModalCourse />}
-          <button className="button modal__exit" onClick={resetModalVisible}>
+          <button className="button modal__exit" onClick={changeModalVisible}>
             <img
               src={require("../../assets/img/exit.svg").default}
               alt="Arrow"

@@ -1,6 +1,5 @@
 import "./home.scss";
 
-import Keyboard from "../keyboard/keyboard";
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
 

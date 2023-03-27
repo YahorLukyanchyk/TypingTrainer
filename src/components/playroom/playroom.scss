@@ -1,0 +1,90 @@
+@import "../../assets/scss/variables.scss";
+
+.hg-rows {
+  width: 100%;
+}
+
+.hg-row {
+  display: flex;
+}
+
+.myblock {
+  display: flex;
+}
+
+span {
+  white-space: pre;
+}
+
+.playroom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 60vh;
+
+  .button {
+    z-index: 1;
+  }
+  
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stats__item {
+  padding: 25px;
+  background-color: $main_background_opacity;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.stats__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stats__title {
+  font-family: "InputMono";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.status__param {
+  font-family: "InputMonoCondensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  font-feature-settings: "zero";
+}
+
+.text__block {
+  position: relative;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  flex-grow: 1;
+
+  div {
+    padding: 5px 0;
+  }
+}
+
+.text__typing {
+  position: absolute;
+  top: 0;
+  color: #70f4a5;
+  border-radius: 5px;
+}

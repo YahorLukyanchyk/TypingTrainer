@@ -1,0 +1,6 @@
+@import "../../assets/scss/variables.scss";
+
+.profile__block{
+    display: grid;
+    grid-template-columns: minmax(auto, 335px) 1fr;
+}

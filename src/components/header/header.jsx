@@ -1,16 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
 
 import "./header.scss";
 
 const setNavAvtive = ({ isActive }) =>
   isActive ? " header__nav-link nav-active" : "header__nav-link";
 
-function Header({
-  changeModalVisible,
-  userData,
-  loggedStatus,
-  resetModalVisible,
-}) {
+function Header({ changeModalVisible }) {
+  const auth = useAuthUser()
+  const isAuthenticated = useIsAuthenticated();
+
   return (
     <header className="header">
       <div className="header__container">
@@ -48,7 +47,9 @@ function Header({
               </li>
             </ul>
           </nav>
-          {loggedStatus === false && (
+          {isAuthenticated() ? (
+            <NavLink to="profile/courses">{auth().name}</NavLink>
+          ) : (
             <button
               id="sign-in"
               onClick={changeModalVisible}
@@ -56,11 +57,6 @@ function Header({
             >
               Вход/Регистрация
             </button>
-          )}
-          {loggedStatus === true && (
-            <>
-              <p>{userData.data.username}</p>
-            </>
           )}
         </div>
       </div>

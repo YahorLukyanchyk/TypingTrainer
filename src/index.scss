@@ -66,6 +66,18 @@ p {
   line-height: 24px;
 }
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
+}
+
+#countdown {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+  font-size: 0vw;
+  opacity: 100%;
+  color: #040;
 }
