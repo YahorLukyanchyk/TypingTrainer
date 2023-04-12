@@ -2,9 +2,9 @@ import { useIsAuthenticated } from "react-auth-kit";
 import { Navigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Aside from "../aside/aside";
-import Modes from "./modes/modes";
-import Courses from "./courses/courses";
-import Settings from "./settings/settings";
+import Modes from "./profile-modes/profile-modes";
+import Courses from "./profile-courses/profile-courses";
+import Settings from "./profile-settings/profile-settings";
 
 import "./profile.scss";
 

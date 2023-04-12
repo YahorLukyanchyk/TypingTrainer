@@ -1,0 +1,26 @@
+@import "../../../assets/scss/variables.scss";
+
+.mode-block__wrapper{
+    padding: 25px;
+
+    img{
+        border-radius: 0;
+        object-fit: contain;
+    }
+}
+
+.mode-block__inner-wrapper{
+    display: flex;
+    gap: 20px;
+}
+
+.mode-block__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mode-block__action{
+    display: flex;
+    gap: 20px;
+}

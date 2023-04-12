@@ -1,0 +1,32 @@
+@import "../../../assets/scss/variables.scss";
+
+.training-block__wrapper {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  img {
+    border-radius: 0;
+    object-fit: contain;
+  }
+}
+
+.training-block__list {
+  li {
+    margin-left: 20px;
+    list-style-type: disc;
+  }
+}
+
+.training-block__content-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

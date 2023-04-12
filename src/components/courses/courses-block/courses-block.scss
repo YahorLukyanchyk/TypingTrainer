@@ -1,0 +1,25 @@
+@import "../../../assets/scss/variables.scss";
+
+.course-block__wrapper{
+    padding: 25px;
+
+    img{
+        border-radius: 0;
+    }
+}
+
+.course-block__inner-wrapper{
+    display: flex;
+    gap: 20px;
+}
+
+.course-block__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-block__action{
+    display: flex;
+    gap: 20px;
+}

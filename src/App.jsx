@@ -13,10 +13,13 @@ import Home from "./components/home/home";
 import Footer from "./components/footer/footer";
 import UpButton from "./components/up-button/up-button";
 import Profile from "./components/profile/profile";
-import Courses from "./components/profile/courses/courses";
-import Modes from "./components/profile/modes/modes";
-import Settings from "./components/profile/settings/settings";
+import ProfileCourses from "./components/profile/profile-courses/profile-courses";
+import ProfileModes from "./components/profile/profile-modes/profile-modes";
+import ProfileSettings from "./components/profile/profile-settings/profile-settings";
 import PlayRoom from "./components/playroom/playroom";
+import Training from "./components/training/training";
+import Courses from "./components/courses/courses";
+import Modes from "./components/modes/modes";
 
 const device = deviceType();
 
@@ -46,10 +49,13 @@ function App() {
                 path="/"
                 element={<Home changeModalVisible={changeModalVisible} />}
               />
+              <Route path="training" element={<Training/>}/>
+              <Route path="courses" element={<Courses changeModalVisible={changeModalVisible}/>}/>
+              <Route path="modes" element={<Modes changeModalVisible={changeModalVisible}/>}/>
               <Route path="profile/*" element={<Profile />}>
-                <Route path="courses" element={<Courses />}></Route>
-                <Route path="modes" element={<Modes />}></Route>
-                <Route path="settings" element={<Settings />}></Route>
+                <Route path="courses" element={<ProfileCourses/>}></Route>
+                <Route path="modes" element={<ProfileModes />}></Route>
+                <Route path="settings" element={<ProfileSettings />}></Route>
               </Route>
               <Route path="playroom" element={<PlayRoom modalVisible={modalVisible}/>} />
             </Routes>

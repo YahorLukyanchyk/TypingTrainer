@@ -1,7 +1,7 @@
-function Modes() {
+function ProfileModes() {
     return ( 
         <p>this is modes</p>
      );
 }
 
-export default Modes;
+export default ProfileModes;
