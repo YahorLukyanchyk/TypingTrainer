@@ -6,6 +6,8 @@
   background-color: $popup_background;
   border: 2px solid $main_color;
   overflow: hidden;
+  border-radius: 20px;
+  flex-shrink: 0;
 
   .button,
   .input {

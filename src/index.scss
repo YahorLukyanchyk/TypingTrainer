@@ -3,6 +3,18 @@
 @import "./assets/scss/variables.scss";
 @import "./assets/scss/buttons.scss";
 
+// bootstrap reset
+*,
+::before,
+::after {
+  box-sizing: content-box;
+}
+
+.modal-content{
+  background: none;
+  border: none;
+}
+
 body,
 html {
   height: 100%;
@@ -58,7 +70,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-p {
+p, .paragraph {
   font-family: "InputMonoCondensed";
   font-style: normal;
   font-weight: 400;
@@ -71,7 +83,7 @@ p {
 }
 
 #countdown {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   display: inline-block;

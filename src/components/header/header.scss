@@ -43,8 +43,9 @@
   border-radius: 10px;
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     border: 2px solid $main_color;
+    color: $main_color;
   }
 }
 
@@ -53,7 +54,11 @@
   margin-right: 10px;
 }
 
-.nav-active{
+.nav-active {
   background-color: $main_color;
   color: $popup_background;
+
+  &:hover {
+    color: $popup_background;
+  }
 }

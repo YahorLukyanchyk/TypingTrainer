@@ -26,7 +26,7 @@ function Training() {
                 Для того, чтобы печатать было удобнее всего, нужно выполнять
                 следующие условия:
               </p>
-              <p>
+              <div className="paragraph">
                 <ul className="training-block__list">
                   <li>
                     Сидеть прямо, руки расположить на 20-25 см от тела, локти
@@ -42,7 +42,7 @@ function Training() {
                   </li>
                   <li>Расстояние от глаз до экрана должно быть 45-75 см.</li>
                 </ul>
-              </p>
+              </div>
             </div>
             <img
               src={require("../../assets/img/training-img1.png")}
@@ -81,7 +81,7 @@ function Training() {
                 Цвет клавиш на этой клавиатуре поможет тебе понять и запомнить,
                 каким пальцем на какую клавишу нужно нажимать.
               </p>
-              <p>
+              <div className="paragraph">
                 <ul className="training-block__list">
                   <li>
                     Нажимай клавиши только тем пальцем, который для них
@@ -106,7 +106,7 @@ function Training() {
                     тебе удобнее.
                   </li>
                 </ul>
-              </p>
+              </div>
               <p>
                 Сначала такой метод печати может показаться неудобным. Но не
                 останавливайся. Со временем все будет получаться быстро, легко и
@@ -152,7 +152,7 @@ function Training() {
       <TrainingBlock>
         <div className="training-block__wrapper">
           <h2>Скорость печати</h2>
-          <p>
+          <div className="paragraph">
             <ul className="training-block__list">
               <li>
                 Не пытайся сразу печатать со скоростью света. Начинай
@@ -169,7 +169,7 @@ function Training() {
                 станет выше средней скорости печати.
               </li>
             </ul>
-          </p>
+          </div>
         </div>
       </TrainingBlock>
       <TrainingBlock>

@@ -1,55 +1,32 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 const regURL = "http://26.189.24.33:8080/auth/register";
 
-function RegForm({
-  getUserData,
-  setPostResult,
-}) {
+function RegForm() {
+  const [response, setResponse] = useState(null);
+
   const email = useRef(null);
   const password = useRef(null);
   const username = useRef(null);
 
-  const fortmatResponse = (res) => {
-    return JSON.stringify(res, null, 2);
-  };
+  function register(event) {
+    event.preventDefault();
 
-  async function postData() {
-
-    let result;
-    const postData = {
-      name: username.current.value,
-      email: email.current.value,
-      password: password.current.value,
-    };
-
-    try {
-      const res = await fetch(regURL, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": "token-value",
-        },
-        body: JSON.stringify(postData),
-      });
-
-      const data = await res.json();
-
-      result = {
-        status: res.status,
-        headers: {
-          "Content-Type": res.headers.get("Content-Type"),
-          "Content-Length": res.headers.get("Content-Length"),
-        },
-        data: data,
-      };
-
-      getUserData(result);
-
-      setPostResult(fortmatResponse(result));
-    } catch (err) {
-      setPostResult(err.message);
-    }
+    fetch(regURL, {
+      method: "POST",
+      body: JSON.stringify({
+        name: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": "token-value",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setResponse(data))
+      .catch((error) => setResponse(error));
   }
 
   return (
@@ -65,12 +42,15 @@ function RegForm({
           ref={password}
         />
         <div className="sign-in__verification">
-          <input type="text" className="input input-code" placeholder="Код" />
-          <button type="submit" className="button button-code" disabled>
-            Отправить код
-          </button>
+          <span>
+            {response === null ? "" : response.message}
+          </span>
         </div>
-        <button type="submit" className="button" onClick={postData}>
+        <button
+          type="submit"
+          className="button"
+          onClick={(event) => register(event)}
+        >
           Зарегистрироваться
         </button>
       </div>

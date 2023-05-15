@@ -1,14 +1,16 @@
 {
-  "name": "my-app",
+  "name": "TypingTrainer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "react": "^18.2.0",
     "react-auth-kit": "^2.8.2",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
@@ -16,7 +18,8 @@
     "react-timer-hook": "^3.0.5",
     "sass": "^1.58.1",
     "typed.js": "^2.0.12",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "windows-locale": "^1.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

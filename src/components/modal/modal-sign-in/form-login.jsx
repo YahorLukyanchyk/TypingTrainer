@@ -1,66 +1,52 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useSignIn } from "react-auth-kit";
 
 const logURL = "http://26.189.24.33:8080/auth/login";
 
-function LoginForm({ changeModalVisible, setPostResult }) {
+function LoginForm({ handleClose }) {
+  const [response, setResponse] = useState(null);
+
   const email = useRef(null);
   const password = useRef(null);
 
-  const fortmatResponse = (res) => {
-    return JSON.stringify(res, null, 2);
-  };
-
   const signIn = useSignIn();
 
-  async function getData() {
-    let result;
-    const postData = {
-      email: email.current.value,
-      password: password.current.value,
-    };
+  function login(event) {
+    event.preventDefault();
 
-    console.log(postData);
+    fetch(logURL, {
+      method: "POST",
+      body: JSON.stringify({
+        email: email.current.value,
+        password: password.current.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": "token-value",
+        Authorization:
+          "Basic " +
+          window.btoa(email.current.value + ":" + password.current.value),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.userDTO.enabled === false) {
+          setResponse({ message: "Email не был подтвержден!",});
+        } else {
+          signIn({
+            token: data.jwtToken,
+            expiresIn: 3600,
+            tokenType: "Bearer",
+            authState: data.userDTO,
+          });
 
-    try {
-      const res = await fetch(logURL, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": "token-value",
-          Authorization:
-            "Basic " + window.btoa(postData.email + ":" + postData.password),
-        },
-        body: JSON.stringify(postData),
-      });
+          handleClose();
+        }
+        setResponse(data);
 
-      if (!res.ok) {
-        result = { data: res };
-      }
-
-      const data = await res.json();
-
-      result = {
-        status: res.status,
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": "token-value",
-        },
-        data: data,
-      };
-
-      signIn({
-        token: result.data.jwtToken,
-        expiresIn: 3600,
-        tokenType: "Bearer",
-        authState: result.data.userDTO,
-      });
-      changeModalVisible();
-
-      setPostResult(fortmatResponse(result));
-    } catch (err) {
-      setPostResult(err.message);
-    }
+        return data;
+      })
+      .catch((error) => setResponse(error));
   }
 
   return (
@@ -74,7 +60,10 @@ function LoginForm({ changeModalVisible, setPostResult }) {
           placeholder="Пароль"
           ref={password}
         />
-        <button className="button" onClick={getData}>
+        <div className="sign-in__verification">
+          <span>{response === null ? "" : response.message}</span>
+        </div>
+        <button className="button" onClick={(event) => login(event)}>
           Войти
         </button>
       </div>

@@ -1,6 +1,10 @@
-import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useIsAuthenticated, useAuthUser } from "react-auth-kit";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  useParams,
+} from "react-router-dom";
 
 import "./App.scss";
 
@@ -20,44 +24,39 @@ import PlayRoom from "./components/playroom/playroom";
 import Training from "./components/training/training";
 import Courses from "./components/courses/courses";
 import Modes from "./components/modes/modes";
+import PasswordReset from "./components/password-reset/password-reset";
+import PasswordNew from "./components/password-reset/password-new";
 
 const device = deviceType();
 
 function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState("stats");
-  function changeModalVisible(e) {
-    document.body.classList.toggle("overflow-hidden");
-    setModalVisible(!modalVisible);
-    setModalType(e.target.id);
-  }
+  const { token } = useParams();
 
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <Modal
-          modalVisible={modalVisible}
-          changeModalVisible={changeModalVisible}
-          modalType={modalType}
-        />
-        <Header changeModalVisible={changeModalVisible} />
+        <Modal />
+        <Header />
         <main className="main">
           <div className="main__container">
             <Routes>
               <Route path="*" element={<NotFound />} />
               <Route
-                path="/"
-                element={<Home changeModalVisible={changeModalVisible} />}
+                path={`auth/register/confirm?token=${token}`}
+                element={<Navigate to="/" />}
               />
-              <Route path="training" element={<Training/>}/>
-              <Route path="courses" element={<Courses changeModalVisible={changeModalVisible}/>}/>
-              <Route path="modes" element={<Modes changeModalVisible={changeModalVisible}/>}/>
+              <Route path="/" element={<Home />} />
+              <Route path="training" element={<Training />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="modes" element={<Modes />} />
               <Route path="profile/*" element={<Profile />}>
-                <Route path="courses" element={<ProfileCourses/>}></Route>
+                <Route path="courses" element={<ProfileCourses />}></Route>
                 <Route path="modes" element={<ProfileModes />}></Route>
                 <Route path="settings" element={<ProfileSettings />}></Route>
               </Route>
-              <Route path="playroom" element={<PlayRoom modalVisible={modalVisible}/>} />
+              <Route path="playroom" element={<PlayRoom />} />
+              <Route path="password-reset" element={<PasswordReset />} />
+              <Route path="password-new" element={<PasswordNew />} />
             </Routes>
           </div>
         </main>

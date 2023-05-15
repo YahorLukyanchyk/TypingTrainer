@@ -1,9 +1,20 @@
 import "./home.scss";
 
+import { Modal } from "react-bootstrap";
 import Typed from "typed.js";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Home({ changeModalVisible }) {
+  const [show, setShow] = useState({
+    modal1: false,
+    modal2: false,
+  });
+
+  const handleClose = () => setShow(false);
+  const handleShow = (modal) => {
+    setShow({...show, [modal]: true})
+  };
+
   const typedText = useRef(null);
 
   useEffect(() => {
@@ -27,6 +38,24 @@ function Home({ changeModalVisible }) {
 
   return (
     <>
+      <Modal
+        show={show.modal1}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        jajajaja
+        <button onClick={handleClose}>close</button>
+      </Modal>
+      <Modal
+        show={show.modal2}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        pipipupu
+        <button onClick={handleClose}>close</button>
+      </Modal>
       <section className="section__welcome">
         <div className="section__wrapper">
           <div className="section__content-block">
@@ -34,7 +63,9 @@ function Home({ changeModalVisible }) {
             <div className="section__welcome-text">
               <p ref={typedText}></p>
             </div>
-            <button id="course" className="button" onClick={changeModalVisible}>Регистрация</button>
+            <button id="course" className="button" onClick={() =>handleShow('modal1')}>
+              Регистрация
+            </button>
           </div>
         </div>
       </section>
@@ -63,7 +94,9 @@ function Home({ changeModalVisible }) {
             навыков слепой печати. Присоединяйтесь к нам, чтобы улучшить свои
             навыки!
           </h2>
-          <button className="button" onClick={changeModalVisible}>Регистрация</button>
+          <button className="button" onClick={() =>handleShow('modal2')}>
+            Регистрация
+          </button>
         </div>
       </section>
     </>

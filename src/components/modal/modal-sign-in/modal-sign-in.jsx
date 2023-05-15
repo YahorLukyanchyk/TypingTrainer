@@ -10,16 +10,11 @@ function scrollModal() {
   signInRowBlock.classList.toggle("sign-in-scroll-active");
 }
 
-function ModalSignIn({  changeModalVisible }) {
-  const [postResult, setPostResult] = useState(null);
-
+function ModalSignIn({ handleClose }) {
   return (
     <div className="modal__sign-in sign-in__modal">
       <div className="sign-in__row-block">
-        <LoginForm
-          changeModalVisible={changeModalVisible}
-          setPostResult={setPostResult}
-        />
+        <LoginForm handleClose={handleClose} />
         <button className="sign-in__scroll" onClick={scrollModal}>
           <div className="sign-in__scroll-to-reg">
             <h2>Регистрация</h2>
@@ -41,7 +36,7 @@ function ModalSignIn({  changeModalVisible }) {
             </div>
           </div>
         </button>
-        <RegForm setPostResult={setPostResult} />
+        <RegForm/>
       </div>
     </div>
   );

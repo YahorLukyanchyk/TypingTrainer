@@ -12,20 +12,14 @@
   display: flex;
 }
 
-span {
-  white-space: pre;
-}
-
 .playroom {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 60vh;
 
   .button {
     z-index: 1;
   }
-  
 }
 
 .stats {
@@ -75,16 +69,26 @@ span {
   font-weight: 500;
   font-size: 32px;
   line-height: 32px;
-  flex-grow: 1;
 
   div {
     padding: 5px 0;
   }
 }
 
-.text__typing {
-  position: absolute;
-  top: 0;
+.correct {
   color: #70f4a5;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.text__block {
+  padding: 25px;
+  background-color: $main_background_opacity;
+}
+
+.char{
+  padding: 6px 1px;
   border-radius: 5px;
 }
