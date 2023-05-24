@@ -1,34 +1,21 @@
 import { useState, useRef } from "react";
 
+import PasswordBlock1 from "./password-block1";
+import PasswrodBlock2 from "./password-block2";
+import "./password-reset.scss";
+
 function PasswordReset() {
-  const [responce, setResponse] = useState(null);
-
-  const email = useRef(null);
-
-  function resetPassword(event) {
-    event.preventDefault();
-
-    fetch(
-      `http://26.189.24.33:8080/auth/password-reset?email=${email.current.value}`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => setResponse(data))
-      .catch((error) => setResponse(error));
-  }
-
   return (
-    <>
-      <form>
-        <input type="text" name="email" ref={email} />
-        <button type="submit" onClick={(event) => resetPassword(event)}>
-          Сбросить пароль
-        </button>
-      </form>
-      <span>{responce === null ? "" : responce.message}</span>
-    </>
+    <section>
+      <div className="section__wrapper">
+        <h1 className="password-heading">Форма сброса пароля</h1>
+        <div className="password-reset">
+          <PasswordBlock1 />
+          <div className="middle-border"></div>
+          <PasswrodBlock2 />
+        </div>
+      </div>
+    </section>
   );
 }
 

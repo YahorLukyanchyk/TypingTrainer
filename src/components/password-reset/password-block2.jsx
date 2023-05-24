@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-function PasswordNew() {
+function PasswrodBlock2() {
   const [responce, setResponse] = useState(null);
 
   const token = useRef(null);
@@ -28,21 +28,40 @@ function PasswordNew() {
 
   return (
     <>
-      <form>
-        <input type="text" name="token" ref={token} />
-        <input type="password" name="password" ref={password} />
+      <form className="password-block">
+        <label>2. Введите новый пароль используя токен</label>
         <input
+          className="input"
+          type="text"
+          name="token"
+          placeholder="Токен подтверждения"
+          ref={token}
+        />
+        <input
+          className="input"
+          type="password"
+          name="password"
+          placeholder="Новый пароль"
+          ref={password}
+        />
+        <input
+          className="input"
           type="password"
           name="confirmedPassword"
+          placeholder="Повторите новый пароль"
           ref={confirmedPassword}
         />
-        <button type="submit" onClick={(event) => newPassword(event)}>
+        <button
+          className="button"
+          type="submit"
+          onClick={(event) => newPassword(event)}
+        >
           Сбросить пароль
         </button>
+        <span>{responce === null ? "" : responce.message}</span>
       </form>
-      <span>{responce === null ? "" : responce.message}</span>
     </>
   );
 }
 
-export default PasswordNew;
+export default PasswrodBlock2;

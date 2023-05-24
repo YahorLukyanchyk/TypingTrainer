@@ -25,7 +25,6 @@ import Training from "./components/training/training";
 import Courses from "./components/courses/courses";
 import Modes from "./components/modes/modes";
 import PasswordReset from "./components/password-reset/password-reset";
-import PasswordNew from "./components/password-reset/password-new";
 
 const device = deviceType();
 
@@ -41,10 +40,6 @@ function App() {
           <div className="main__container">
             <Routes>
               <Route path="*" element={<NotFound />} />
-              <Route
-                path={`auth/register/confirm?token=${token}`}
-                element={<Navigate to="/" />}
-              />
               <Route path="/" element={<Home />} />
               <Route path="training" element={<Training />} />
               <Route path="courses" element={<Courses />} />
@@ -56,7 +51,6 @@ function App() {
               </Route>
               <Route path="playroom" element={<PlayRoom />} />
               <Route path="password-reset" element={<PasswordReset />} />
-              <Route path="password-new" element={<PasswordNew />} />
             </Routes>
           </div>
         </main>

@@ -36,7 +36,7 @@ function ModalSignIn({ handleClose }) {
             </div>
           </div>
         </button>
-        <RegForm/>
+        <RegForm />
       </div>
     </div>
   );
