@@ -1,0 +1,14 @@
+@import "../../assets/scss/variables.scss";
+
+.level{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    gap: 20px;
+    background-color: $main_background_opacity;
+}

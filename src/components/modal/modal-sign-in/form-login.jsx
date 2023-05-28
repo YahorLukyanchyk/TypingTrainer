@@ -31,7 +31,7 @@ function LoginForm({ handleClose }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.userDTO.enabled === false) {
-          setResponse({ message: "Email не был подтвержден!",});
+          setResponse({ message: "Email не был подтвержден!" });
         } else {
           signIn({
             token: data.jwtToken,

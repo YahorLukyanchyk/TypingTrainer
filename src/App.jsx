@@ -25,11 +25,11 @@ import Training from "./components/training/training";
 import Courses from "./components/courses/courses";
 import Modes from "./components/modes/modes";
 import PasswordReset from "./components/password-reset/password-reset";
+import CoursesLevels from "./components/courses/courses-levels";
 
 const device = deviceType();
 
 function App() {
-  const { token } = useParams();
 
   return (
     <BrowserRouter>
@@ -43,6 +43,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="training" element={<Training />} />
               <Route path="courses" element={<Courses />} />
+              <Route path="courses/levels" element={<CoursesLevels />} />
               <Route path="modes" element={<Modes />} />
               <Route path="profile/*" element={<Profile />}>
                 <Route path="courses" element={<ProfileCourses />}></Route>
